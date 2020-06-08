@@ -21,17 +21,11 @@ declare module "iconv-lite-umd" {
 
   export function encodingExists(encoding: string): boolean;
 
+  // Stream API
   // WARNING: Excluded because it is specific to node.
+  // export function decodeStream(encoding: string, options?: Options): NodeJS.ReadWriteStream;
 
-  // export function decodeStream(
-  //   encoding: string,
-  //   options?: Options
-  // ): NodeJS.ReadWriteStream;
-
-  // export function encodeStream(
-  //   encoding: string,
-  //   options?: Options
-  // ): NodeJS.ReadWriteStream;
+  // export function encodeStream(encoding: string, options?: Options): NodeJS.ReadWriteStream;
 
   // Low-level stream APIs
   export function getEncoder(
