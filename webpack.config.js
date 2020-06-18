@@ -15,7 +15,7 @@ const removeUnsupportedEncodings = [
 
 module.exports = {
   entry: "iconv-lite",
-  devtool: "inline-source-map",
+  devtool: "source-map",
   mode: "production",
   output: {
     path: path.resolve(__dirname, "lib"),
