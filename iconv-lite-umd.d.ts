@@ -46,11 +46,11 @@ export interface Options {
 }
 
 export interface EncoderStream {
-  write(str: string): Buffer;
-  end(): Buffer | undefined;
+  write(str: string): Uint8Array;
+  end(): Uint8Array | undefined;
 }
 
 export interface DecoderStream {
-  write(buf: Buffer): string;
+  write(buf: Uint8Array): string;
   end(): string | undefined;
 }
