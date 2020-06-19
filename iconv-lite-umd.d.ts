@@ -8,7 +8,7 @@
 declare module "iconv-lite-umd" {
   // Basic API
   export function decode(
-    buffer: Buffer,
+    buffer: Uint8Array,
     encoding: string,
     options?: Options
   ): string;
@@ -17,7 +17,7 @@ declare module "iconv-lite-umd" {
     content: string,
     encoding: string,
     options?: Options
-  ): Buffer;
+  ): Uint8Array;
 
   export function encodingExists(encoding: string): boolean;
 
