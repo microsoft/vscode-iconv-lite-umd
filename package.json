@@ -1,12 +1,12 @@
 {
   "name": "iconv-lite-umd",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Iconv-lite as UMD module",
   "main": "lib/iconv-lite-umd.js",
   "typings": "iconv-lite-umd.d.ts",
   "scripts": {
-    "build": "webpack",
-    "prepublish": "webpack"
+    "build": "yarn && webpack",
+    "prepublish": "yarn && webpack"
   },
   "repository": {
     "type": "git",
