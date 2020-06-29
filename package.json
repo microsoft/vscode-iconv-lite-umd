@@ -5,8 +5,8 @@
   "main": "lib/iconv-lite-umd.js",
   "typings": "iconv-lite-umd.d.ts",
   "scripts": {
-    "build": "yarn && webpack",
-    "prepublish": "yarn && webpack"
+    "build": "webpack",
+    "prepublish": "webpack"
   },
   "repository": {
     "type": "git",
