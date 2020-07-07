@@ -1,6 +1,6 @@
 {
   "name": "iconv-lite-umd",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Iconv-lite as UMD module",
   "main": "lib/iconv-lite-umd.js",
   "typings": "iconv-lite-umd.d.ts",

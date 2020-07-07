@@ -4,8 +4,7 @@ const path = require("path");
 // This saves us some bytes, which is important for vscode-web.
 const removeUnsupportedEncodings = [
   "utf7.js",
-  "utf32.js",
-  "tables/cp949.json",
+  "utf32.js"
 ].map((file) => {
   return {
     test: path.resolve(__dirname, "node_modules/iconv-lite/encodings", file),
