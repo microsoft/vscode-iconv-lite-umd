@@ -29,6 +29,5 @@ module.exports = {
     alias: {
       "fake-loader": path.resolve(__dirname, "fake-loader.js"),
     },
-  },
-  target: "node"
+  }
 };
