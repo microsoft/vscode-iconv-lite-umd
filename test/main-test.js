@@ -68,12 +68,12 @@ describe("Generic UTF8-UCS2 tests", function() {
 
         assert.strictEqual(iconv.decode(Buffer.from("abc"), "gbk"), "abc");
         assert.strictEqual(iconv.decode(Buffer.from("abc"), "win1251"), "abc");
-        assert.strictEqual(iconv.decode(Buffer.from("abc"), "utf7"), "abc");
+        //assert.strictEqual(iconv.decode(Buffer.from("abc"), "utf7"), "abc");
         assert.strictEqual(iconv.decode(Buffer.from("abc"), "utf8"), "abc");
 
         assert.strictEqual(iconv.encode("abc", "gbk").toString(), "abc");
         assert.strictEqual(iconv.encode("abc", "win1251").toString(), "abc");
-        assert.strictEqual(iconv.encode("abc", "utf7").toString(), "abc");
+        //assert.strictEqual(iconv.encode("abc", "utf7").toString(), "abc");
         assert.strictEqual(iconv.encode("abc", "utf8").toString(), "abc");
 
         delete Object.prototype.permits;
