@@ -1,6 +1,6 @@
 {
-  "name": "iconv-lite-umd",
-  "version": "0.6.8",
+  "name": "@vscode/vscode-iconv-lite-umd",
+  "version": "0.6.9",
   "description": "Iconv-lite as UMD module",
   "main": "lib/iconv-lite-umd.js",
   "typings": "iconv-lite-umd.d.ts",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Microsoft/iconv-lite-umd.git"
+    "url": "git+https://github.com/Microsoft/vscode-iconv-lite-umd.git"
   },
   "keywords": [
     "iconv-lite",
@@ -20,15 +20,15 @@
   "author": "Microsoft",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Microsoft/iconv-lite-umd/issues"
+    "url": "https://github.com/Microsoft/vscode-iconv-lite-umd/issues"
   },
-  "homepage": "https://github.com/Microsoft/iconv-lite-umd#readme",
+  "homepage": "https://github.com/Microsoft/vscode-iconv-lite-umd#readme",
   "devDependencies": {
     "async": "^3.2.0",
     "c8": "^7.2.0",
     "errto": "^0.2.1",
     "iconv": "^2.3.5",
-    "iconv-lite": "0.6.2",
+    "iconv-lite": "0.6.3",
     "mocha": "^3.5.3",
     "request": "^2.88.2",
     "semver": "^6.3.0",
