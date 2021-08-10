@@ -1,5 +1,5 @@
 {
-  "name": "@vscode/vscode-iconv-lite-umd",
+  "name": "@vscode/iconv-lite-umd",
   "version": "0.6.9",
   "description": "Iconv-lite as UMD module",
   "main": "lib/iconv-lite-umd.js",
