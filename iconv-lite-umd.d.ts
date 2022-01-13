@@ -5,7 +5,7 @@
  *  Install with `npm install @types/node --save-dev`
  *--------------------------------------------------------------------------------------------*/
 
-declare module "iconv-lite-umd" {
+declare module "@vscode/iconv-lite-umd" {
   // Basic API
   export function decode(
     buffer: Uint8Array,
