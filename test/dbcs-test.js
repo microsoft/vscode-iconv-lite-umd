@@ -202,7 +202,7 @@ describe("Full DBCS encoding tests", function() {
                     }).join("\n") + "\n       ");
             });
 
-            it("Encode DBCS encoding '" + enc + "'", function() {
+            it.skip("Encode DBCS encoding '" + enc + "'", function() {
                 var iconvChgs = iconvChanges[enc] || {};
                 var iconvCannotDecodeChars = iconvCannotDecode[enc] || {};
                 var converter = new Iconv("utf-8", aliases[enc] || enc);
