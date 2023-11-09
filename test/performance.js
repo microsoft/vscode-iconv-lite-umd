@@ -1,70 +1,77 @@
-
-if (module.parent) // Skip this file from testing.
+if (!require.main) // The current module was required by another module. Skip this file from testing.
     return;
 
-var iconv = require('iconv');
-var iconv_lite = require("../");
+const iconv = require('iconv');
+const iconv_lite = require("../");
 
-var encoding = process.argv[2] || "windows-1251";
-var convertTimes = 10000;
+const encoding = "windows-1251";
+const convertTimes = 10000;
 
-var encodingStrings = {
+const encodingStrings = {
     'windows-1251': 'This is a test string 32 chars..',
     'gbk':          '这是中文字符测试。。！@￥%12',
     'utf8': '这是中文字符测试。。！@￥%12This is a test string 48 chars..',
 };
 // Test encoding.
-var str = encodingStrings[encoding];
+let str = encodingStrings[encoding];
 if (!str) {
     throw new Error('Don\'t support ' + encoding + ' performance test.');
 }
-for (var i = 0; i < 13; i++) {
+for (let i = 0; i < 13; i++) {
     str = str + str;
 }
 
-console.log('\n' + encoding + ' charset performance test:');
-console.log("\nEncoding "+str.length+" chars "+convertTimes+" times:");
+{
+    console.log('\n' + encoding + ' charset performance test:');
+    console.log("\nEncoding "+str.length+" chars "+convertTimes+" times:");
 
-var start = Date.now();
-var converter = new iconv.Iconv("utf8", encoding);
-for (var i = 0; i < convertTimes; i++) {
-    var b = converter.convert(str);
+    const start = Date.now();
+    const converter = new iconv.Iconv("utf8", encoding);
+    let b;
+    for (let i = 0; i < convertTimes; i++) {
+        b = converter.convert(str);
+    }
+    const duration = Date.now() - start;
+    const mbs = convertTimes*b.length/duration/1024;
+
+    console.log("iconv: "+duration+"ms, "+mbs.toFixed(2)+" Mb/s.");
 }
-var duration = Date.now() - start;
-var mbs = convertTimes*b.length/duration/1024;
+{
+    const start = Date.now();
+    let b;
+    for (let i = 0; i < convertTimes; i++) {
+        b = iconv_lite.encode(str, encoding);
+    }
+    const duration = Date.now() - start;
+    const mbs = convertTimes*b.length/duration/1024;
 
-console.log("iconv: "+duration+"ms, "+mbs.toFixed(2)+" Mb/s.");
-
-var start = Date.now();
-for (var i = 0; i < convertTimes; i++) {
-    var b = iconv_lite.encode(str, encoding);
+    console.log("iconv-lite: "+duration+"ms, "+mbs.toFixed(2)+" Mb/s.");
 }
-var duration = Date.now() - start;
-var mbs = convertTimes*b.length/duration/1024;
-
-console.log("iconv-lite: "+duration+"ms, "+mbs.toFixed(2)+" Mb/s.");
 
 
-// Test decoding.
-var buf = iconv_lite.encode(str, encoding);
-console.log("\nDecoding "+buf.length+" bytes "+convertTimes+" times:");
+{
+    const buf = new iconv.Iconv("utf8", encoding).convert(str);
+    // Test decoding.
+    console.log("\nDecoding "+buf.length+" bytes "+convertTimes+" times:");
 
-var start = Date.now();
-var converter = new iconv.Iconv(encoding, "utf8");
-for (var i = 0; i < convertTimes; i++) {
-    var s = converter.convert(buf).toString();
+    const start = Date.now();
+    const converter = new iconv.Iconv(encoding, "utf8");
+    for (let i = 0; i < convertTimes; i++) {
+        converter.convert(buf).toString();
+    }
+    const duration = Date.now() - start;
+    const mbs = convertTimes*buf.length/duration/1024;
+
+    console.log("iconv: "+duration+"ms, "+mbs.toFixed(2)+" Mb/s.");
 }
-var duration = Date.now() - start;
-var mbs = convertTimes*buf.length/duration/1024;
+{
+    const lite_buf = iconv_lite.encode(str, encoding);
+    const start = Date.now();
+    for (let i = 0; i < convertTimes; i++) {
+        iconv_lite.decode(lite_buf, encoding);
+    }
+    const duration = Date.now() - start;
+    const mbs = convertTimes*lite_buf.length/duration/1024;
 
-console.log("iconv: "+duration+"ms, "+mbs.toFixed(2)+" Mb/s.");
-
-var start = Date.now();
-for (var i = 0; i < convertTimes; i++) {
-    var s = iconv_lite.decode(buf, encoding);
+    console.log("iconv-lite: "+duration+"ms, "+mbs.toFixed(2)+" Mb/s.");
 }
-var duration = Date.now() - start;
-var mbs = convertTimes*buf.length/duration/1024;
-
-console.log("iconv-lite: "+duration+"ms, "+mbs.toFixed(2)+" Mb/s.");
-
