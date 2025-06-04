@@ -27,14 +27,14 @@ extends:
       - name: iconv-lite-umd
 
         buildSteps:
-          - script: yarn install
+          - script: npm ci
             displayName: Install and build
 
         testSteps:
-          - script: yarn install
+          - script: npm ci
             displayName: Install and build
 
-          - script: yarn test
+          - script: npm run test
             displayName: Test npm package
 
         publishPackage: ${{ parameters.publishPackage }}
