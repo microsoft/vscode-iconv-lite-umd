@@ -9,32 +9,32 @@ declare module "@vscode/iconv-lite-umd" {
   // Basic API
   export function decode(
     buffer: Uint8Array,
-    encoding: string,
+    encoding: Encoding,
     options?: Options
   ): string;
 
   export function encode(
     content: string,
-    encoding: string,
+    encoding: Encoding,
     options?: Options
   ): Uint8Array;
 
-  export function encodingExists(encoding: string): boolean;
+  export function encodingExists(encoding: Encoding): boolean;
 
   // Stream API
   // WARNING: Excluded because it is specific to node.
-  // export function decodeStream(encoding: string, options?: Options): NodeJS.ReadWriteStream;
+  // export function decodeStream(encoding: Encoding, options?: Options): NodeJS.ReadWriteStream;
 
-  // export function encodeStream(encoding: string, options?: Options): NodeJS.ReadWriteStream;
+  // export function encodeStream(encoding: Encoding, options?: Options): NodeJS.ReadWriteStream;
 
   // Low-level stream APIs
   export function getEncoder(
-    encoding: string,
+    encoding: Encoding,
     options?: Options
   ): EncoderStream;
 
   export function getDecoder(
-    encoding: string,
+    encoding: Encoding,
     options?: Options
   ): DecoderStream;
 }
@@ -42,7 +42,7 @@ declare module "@vscode/iconv-lite-umd" {
 export interface Options {
   stripBOM?: boolean;
   addBOM?: boolean;
-  defaultEncoding?: string;
+  defaultEncoding?: Encoding;
 }
 
 export interface EncoderStream {
@@ -54,3 +54,53 @@ export interface DecoderStream {
   write(buf: Uint8Array): string;
   end(): string | undefined;
 }
+
+type Encoding =
+  | "utf8"
+  | "utf8bom"
+  | "utf16le"
+  | "utf16be"
+  | "windows1252"
+  | "iso88591"
+  | "iso88593"
+  | "iso885915"
+  | "macroman"
+  | "cp437"
+  | "windows1256"
+  | "iso88596"
+  | "windows1257"
+  | "iso88594"
+  | "iso885914"
+  | "windows1250"
+  | "iso88592"
+  | "cp852"
+  | "windows1251"
+  | "cp866"
+  | "cp1125"
+  | "iso88595"
+  | "koi8r"
+  | "koi8u"
+  | "iso885913"
+  | "windows1253"
+  | "iso88597"
+  | "windows1255"
+  | "iso88598"
+  | "iso885910"
+  | "iso885916"
+  | "windows1254"
+  | "iso88599"
+  | "windows1258"
+  | "gbk"
+  | "gb18030"
+  | "cp950"
+  | "big5hkscs"
+  | "shiftjis"
+  | "eucjp"
+  | "euckr"
+  | "windows874"
+  | "iso885911"
+  | "koi8ru"
+  | "koi8t"
+  | "gb2312"
+  | "cp865"
+  | "cp850";
