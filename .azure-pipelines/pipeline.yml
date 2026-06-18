@@ -23,6 +23,9 @@ parameters:
 extends:
   template: azure-pipelines/npm-package/pipeline.yml@templates
   parameters:
+    tsa:
+      config:
+        codebaseName: iconv-lite-umd
     npmPackages:
       - name: iconv-lite-umd
 
